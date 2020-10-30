@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>darkmode</title>
+</head>
+<body>
+
+    <div id="theme">
+        <div onclick="setDarkMode(true)" id="darkBtn">
+            <span>Dark</span>
+        </div>
+        <div onclick="setDarkMode(false)" id="lightBtn" class="is-hidden">
+        
+        </div>
+    </div>
+
+    <style type="text/css">
+        body.darkmode {
+            background-color: rgb(57, 57, 57);
+            color: rgb(277, 277, 277);
+        }
+        #theme:hover{
+            cursor: pointer;
+        }
+        .is-hidden{
+            display: none;
+        }
+    </style>
+
+    <h1>Hello World</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex dolores quae quo molestiae nesciunt molestias facere consectetur explicabo qui. Obcaecati amet facilis ipsum, eveniet odio temporibus earum quis magnam et.</p>
+
+    <script type="text/javascript"
+        if(localStorage.getItem('preferredTheme') == 'dark') {
+            setDarkMode(true)
+        }
+        function setDarkMode(isDark){
+            var darkBtn = document.getElementById('darkBtn')
+            var lightBtn = document.getElementById('lightBtn')
+
+            if(isDark) {
+                lightBtn.style.display = "block"
+                darkBtn.style.display = "none"
+                localStorage.setItem('preferredTheme');
+            }
+            else {
+                lightBtn.style.display ="none"
+                darkBtn.style.display ="block"
+                localStorage.removeItem ('preferredTheme');
+            }
+
+            document.body.classList.toggle("darkmode")
+        }
+    ></script>
+</body>
+</html>
